@@ -14,7 +14,7 @@ module.exports = function (b, opts) {
   }
 
   function end() {
-    this.push(sass.renderSync({file: b}));
+    this.push(sass.renderSync({file: b, outputStyle: 'compressed'}).css);
     this.push(null);
   }
 
