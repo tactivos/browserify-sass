@@ -14,7 +14,8 @@ module.exports = function (b, opts) {
   }
 
   function end() {
-    this.push(sass.renderSync({file: b, outputStyle: 'compressed'}).css);
+    var css = sass.renderSync({file: b, outputStyle: 'compressed'}).css.toString('utf8');
+    this.push('module.exports = ' + JSON.stringify(css.trim()) + ';');
     this.push(null);
   }
 
