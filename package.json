@@ -9,12 +9,15 @@
   },
   "keywords": [
     "browserify-plugin",
-    "sass"
+    "sass",
+    "autoprefixer"
   ],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^6.3.6",
     "node-sass": "^3.4.2",
+    "postcss": "^5.0.19",
     "through2": "^2.0.1"
   },
   "devDependencies": {

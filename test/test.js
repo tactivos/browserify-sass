@@ -11,7 +11,7 @@ describe('browserify-sass', function() {
     b.transform(sass);
     b.require(__dirname + '/fixture.scss');
     b.bundle().pipe(concatStream(function(result) {
-      assert.include(result.toString(), 'module.exports = "p a{color:red}";');
+      assert.include(result.toString(), 'module.exports = "p a{-webkit-transform:scale(0.5);transform:scale(0.5)}";');
       done();
     }));
   });

@@ -1,6 +1,8 @@
 var path = require('path');
 var through = require('through2');
 var sass = require('node-sass');
+var postcss = require('postcss');
+var autoprefixer = require('autoprefixer');
 
 var extensions = ['.scss', '.sass'];
 
@@ -15,6 +17,7 @@ module.exports = function (b, opts) {
 
   function end() {
     var css = sass.renderSync({file: b, outputStyle: 'compressed'}).css.toString('utf8');
+    css = postcss([autoprefixer]).process(css).css;
     this.push('module.exports = ' + JSON.stringify(css.trim()) + ';');
     this.push(null);
   }
